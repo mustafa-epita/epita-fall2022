@@ -1,0 +1,17 @@
+# Line to install typescript part
+
+yarn add -D @types/express ts-node typescript tsup tsconfig-paths @types/node
+
+# Line for package.json stated
+
+"dev": "nodemon --watch . -e js,ts,json --exec \"ts-node ./index.ts\"",
+
+
+# Mongoose
+
+https://mongoosejs.com/
+
+# Bcrypt
+
+yarn add bcrypt
+yarn add -D @types/bcrypt
