@@ -1,32 +1,87 @@
-import React from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from './pages/Home';
-import Animals from './pages/Animals';
-import Contact from './pages/Contact';
-import Register from './pages/Register';
-
-import Default from './layout/Default';
+import Home from "./pages/Home";
+import Animals from "./pages/Animals";
+import Contact from "./pages/Contact";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Logout from "./pages/Logout";
+import Todos from "./pages/Todos";
+import TodosRTK from "./pages/TodosRTK";
+import Default from "./layout/Default";
 
 const Router = () => {
   return (
     <BrowserRouter>
-        <Routes>
-            <Route path="/" element={ <Default>
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <Default privated>
               <Home />
-            </Default> } />
-            <Route path="/animals" element={<Default>
+            </Default>
+          }
+        />
+        <Route
+          path='/animals'
+          element={
+            <Default privated>
               <Animals />
-            </Default>} />
-            <Route path="/contact" element={<Default>
+            </Default>
+          }
+        />
+        <Route
+          path='/contact'
+          element={
+            <Default>
               <Contact />
-            </Default>} />
-            <Route path="/register" element={<Default>
+            </Default>
+          }
+        />
+        <Route
+          path='/todos'
+          element={
+            <Default privated>
+              <Todos />
+            </Default>
+          }
+        />
+        <Route
+          path='/todos-rtk'
+          element={
+            <Default privated>
+              <TodosRTK />
+            </Default>
+          }
+        />
+        <Route
+          path='/register'
+          element={
+            <Default>
               <Register />
-            </Default>} />
-        </Routes>
+            </Default>
+          }
+        />
+        <Route
+          path='/login'
+          element={
+            <Default>
+              <Login />
+            </Default>
+          }
+        />
+        <Route
+          path='/logout'
+          element={
+            <Default>
+              <Logout />
+            </Default>
+          }
+        />
+      </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default Router;
