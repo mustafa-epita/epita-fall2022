@@ -20,7 +20,14 @@ export const todoRtkApi = createApi({
       }),
       invalidatesTags: ["Todos"],
     }),
+    removeTodo: builder.mutation({
+      query: (id) => ({
+        url: `todos/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Todos"],
+    }),
   }),
 });
 
-export const { useGetTodosQuery, usePostTodoMutation } = todoRtkApi;
+export const { useGetTodosQuery, usePostTodoMutation, useRemoveTodoMutation } = todoRtkApi;

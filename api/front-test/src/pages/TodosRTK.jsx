@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
+import { FaTrashAlt } from "react-icons/fa";
 
-import { useGetTodosQuery, usePostTodoMutation } from "../services/todos-rtk";
+import { useGetTodosQuery, usePostTodoMutation, useRemoveTodoMutation } from "../services/todos-rtk";
 
 const TodosRTK = () => {
   const { data, error, isLoading } = useGetTodosQuery();
   const [postTodo] = usePostTodoMutation();
+  const [removeTodo] = useRemoveTodoMutation();
   const labelRef = useRef();
 
   const onSubmitHandler = (event) => {
@@ -21,10 +23,13 @@ const TodosRTK = () => {
     labelRef.current.value = "";
   };
 
+  const handleRemove = (id) => {
+    removeTodo(id)
+  }
+
   return (
     <>
-      {isLoading && <>Loading...</>}
-      {!isLoading && (
+      {isLoading ? <>Loading...</> : (
         <>
           <form
             style={{ marginTop: "40px", marginBottom: "40px" }}
@@ -34,7 +39,10 @@ const TodosRTK = () => {
             <input type="submit" value="Save" />
           </form>
           {data.map((todo) => (
-            <div key={todo._id}>{todo.label}</div>
+            <div style={{ display: "flex", gap: "15px"}}>
+              <button style={{ border: "none", background: "none", cursor: "pointer"}} onClick={() => handleRemove(todo._id)}><FaTrashAlt /></button>
+              <div key={todo._id}>{todo.label}</div>
+            </div>
           ))}
         </>
       )}
